@@ -13,21 +13,14 @@ datasource db {
   provider = "postgresql"
 }
 
-model Teacher {
-  id           Int         @id @default(autoincrement())
-  email        String      @unique
-  name         String
-  createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @updatedAt
-  department   Department @relation(fields: [departmentId], references: [id])
-  departmentId Int
-}
+model Institute {
+  id              Int      @id @default(autoincrement())
 
-model Department {
-  id        Int       @id @default(autoincrement())
-  name      String    @unique
-  location  String
-  teachers  Teacher[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  name            String
+  location        String
+  establishedYear Int?
+  type            String?
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
