@@ -25,3 +25,19 @@ export async function deleteInstitute(id: number) {
     });
 }
 
+export async function getInstituteById(id: number): Promise<Institute | null> {
+    return await prisma.institute.findUnique({
+        where: { id },
+    });
+}
+
+export async function updateInstitute(id: number, name: string, location: string) {
+    const institute = await prisma.institute.update({
+        where: { id },
+        data: {
+            name,
+            location
+        },
+    });
+    return institute;
+}

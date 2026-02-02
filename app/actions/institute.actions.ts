@@ -2,6 +2,8 @@
 
 import { redirect } from "next/navigation";
 import * as instituteService from "@/lib/institute.service";
+
+
 export async function addInstitute(data: FormData) {
   const name = data.get("name") as string;
   const location = data.get("location") as string;
@@ -14,6 +16,13 @@ export async function addInstitute(data: FormData) {
 }
 
 export async function deleteInstitute(id: number) {
-    // Call the service to delete the institute
-    console.log('in the server function  deleting   Institute')
+    await instituteService.deleteInstitute(id);
+    redirect('/');
+}
+
+export async function updateInstitute(id: number, data: FormData) {
+    const name = data.get("name") as string;
+    const location = data.get("location") as string;
+    await instituteService.updateInstitute(id, name, location);
+    redirect('/');
 }
