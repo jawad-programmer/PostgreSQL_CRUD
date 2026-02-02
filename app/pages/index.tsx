@@ -5,6 +5,7 @@ import InstituteTable from "../components/InstituteTable";
 
 const Index = async () => {
   const institutes = await getAllInstitutes();
+  console.log(institutes)
   
   return (
     <>

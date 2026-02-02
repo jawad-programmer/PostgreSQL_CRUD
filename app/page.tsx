@@ -5,6 +5,7 @@ export default async function Home() {
   // const institutes = await prisma.institute.findMany();
   // get  institutes where name starts with 'A'
   const institutes = await getAllInstitutes();
+  console.log(institutes)
   return (
     <>
       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4">

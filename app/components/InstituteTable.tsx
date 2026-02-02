@@ -25,9 +25,10 @@ export default function InstituteTable() {
   };
 
   useEffect(() => {
-    fetchData();
     const h = () => fetchData();
     window.addEventListener("institutes:changed", h as EventListener);
+    // Defer fetchData to avoid synchronous setState in effect
+    queueMicrotask(fetchData);
     return () => window.removeEventListener("institutes:changed", h as EventListener);
   }, []);
 
